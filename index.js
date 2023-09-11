@@ -26,6 +26,7 @@ form.onsubmit = (e) => {
         input.classList.add('error')
         btn.classList.add('error_btn')
     }
+    console.log(todo);
 }
 
 
@@ -60,7 +61,7 @@ function reload(arr) {
         removeBtn.append(removeImg)
         // d
         title.onclick = () => {
-            item.isDone = true
+            item.isDone = !item.isDone
             reload(todos);
         }
         title.classList.toggle('done', item.isDone)
