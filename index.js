@@ -60,8 +60,10 @@ function reload(arr) {
         removeBtn.append(removeImg)
         // d
         title.onclick = () => {
-            title.classList.toggle('done')
+            item.isDone = true
+            reload(todos);
         }
+        title.classList.toggle('done', item.isDone)
         removeBtn.onclick = () => {
             todos = todos.filter(todo => {
                 if (todo.id !== item.id) {
