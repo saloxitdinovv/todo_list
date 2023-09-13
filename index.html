@@ -12,9 +12,11 @@
             box-sizing: border-box;
             outline: none;
         }
+
         h1 {
             text-align: center;
         }
+
         form {
             width: 320px;
             margin: 0 auto;
@@ -24,16 +26,18 @@
             margin-top: 10px;
             margin-bottom: 20px;
         }
-        input {
+
+        .input_head {
             all: unset;
             padding: 10px;
             border: 2px solid #0071E3;
             border-radius: 10px;
             width: 100%;
         }
+
         form button {
             all: unset;
-            padding: 10px;   
+            padding: 10px;
             background-color: #0071E3;
             border: 2px solid #0071E3;
             color: #fff;
@@ -47,11 +51,12 @@
             width: 70%;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(3,1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             border-top: 1px solid #c4c4c4;
             padding-top: 20px;
         }
+
         .item {
             width: 100%;
             display: flex;
@@ -62,36 +67,142 @@
             border-radius: 10px;
             padding: 20px;
         }
+
         .item .top {
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
         }
+
         .item .top span {
             font-size: 18px;
             font-weight: 700;
         }
+
         .removeButton {
             background: none;
             border: none;
             cursor: pointer;
         }
+
         .remove {
             width: 10px;
         }
+
         .done {
             text-decoration: line-through;
         }
+
         .title {
             cursor: pointer;
         }
+
         .error {
-            border: 2px solid red;
+            border: 2px solid #ff0000;
         }
+
+        .success {
+            border: 2px solid #1500ff;
+        }
+
         .error_btn {
             background-color: red;
             border: 2px solid red;
+        }
+
+        .noTask {
+            border: 2px solid red;
+        }
+
+        .modal {
+            width: 500px;
+            padding: 50px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /* box-shadow: 0 10px 15px 0 #ffffff; */
+        }
+
+        .save {
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: none;
+            background-color: #1500ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .inp {
+            padding: 10px;
+            border-radius: 10px;
+            width: 200px;
+            /* justify-self: center; */
+        }
+
+        .btn {
+            display: flex;
+            justify-content: end;
+            align-items: start;
+        }
+
+        .close {
+            padding: 10px;
+            border: none;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            background: #b5b5b5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .bg {
+            position: absolute;
+            background-color: #5f5f5f;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* display: none; */
+            opacity: 0.5;
+            z-index: 1;
+
+        }
+
+        .modal {
+            position: absolute;
+            z-index: 99;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+            background-color: #fff;
+        }
+
+        .body {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .window {
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        .check_box {
+            display: flex;
+            gap: 30px;
         }
     </style>
     <title>Document</title>
@@ -99,14 +210,37 @@
 
 <body>
     <h1>Todo List</h1>
-    <form name="todo" >
-        <input type="text" name="title">
+    <form name="todo">
+        <input class="input_head" type="text" name="title">
         <button>add</button>
     </form>
     <div class="container">
-       
+
     </div>
-    
+
+
+    <div class="window">
+        <div class="bg" data-close></div>
+        <form>
+            <div class="modal">
+                <div class="btn">
+                    <button type="button" data-close class="close">X</button>
+                </div>
+                <div class="body">
+                    <input type="text" name="title" class="inp">
+                    <span class="check_box">
+                        <input type="checkbox" name="checkbox" class="checkbox">
+                        <p>Is done?</p>
+                    </span>
+                    <input type="time" name="time" class="inp timeInp">
+                </div>
+                <div class="footer">
+                    <button type="submit" class="save">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <script src="./index.js"></script>
 </body>
 
